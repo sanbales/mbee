@@ -45,6 +45,7 @@
     "bootstrap": "^4.3.1",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
+    "cross-env": "^7.0.2",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^6.2.1",
@@ -75,8 +76,8 @@
     "docker": "node mbee docker",
     "lint": "node mbee lint",
     "migrate": "node mbee migrate",
-    "postinstall": "test $NOPOSTINSTALL || node mbee build",
-    "preinstall": "test $NOPREINSTALL || node ./scripts/clean.js --all",
+    "postinstall": "cross-env-shell \"node mbee test $NOPOSTINSTALL\" || node mbee build",
+    "preinstall": "cross-env-shell \"node mbee test $NOPREINSTALL\" || node ./scripts/clean.js --all",
     "start": "node mbee start",
     "test": "node mbee test",
     "watch": "./node_modules/.bin/webpack --watch --config scripts/webpack-dev.config.js"

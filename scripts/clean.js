@@ -62,8 +62,17 @@ function clean(_args) {
 
   // Clean logs
   if (args.length === 0 || args.includes('--all')) {
-    log('Cleaning logs...');
-    execSync(`${rmd} ${path.join(root, 'build')} ${path.join(root, 'logs')}`);
+    const build_path = `${path.join(root, 'build')}`;
+    if (fs.existsSync(build_path)) {
+      log('Cleaning build...')
+      execSync(`${rmd} ${build_path}`);
+    }
+
+    const logs_path = `${path.join(root, 'logs')}`;
+    if (fs.existsSync(logs_path)) {
+      log('Cleaning logs...');
+      execSync(`${rmd} ${logs_path}`);
+    }
   }
 
   // Clean data

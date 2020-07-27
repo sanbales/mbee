@@ -67,6 +67,12 @@ export NOPOSTINSTALL=1    # Turns off the post-install script
 yarn install
 ```
 
+...for Windows you can use (the space after the `&&` is intentional):
+
+```dos
+set NOPREINSTALL=1&& set NOPOSTINSTALL=1&& yarn install
+```
+
 The build can be run separately from the dependency installation, but the 
 dependencies must be installed first.
 
