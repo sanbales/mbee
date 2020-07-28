@@ -106,7 +106,8 @@ function loadPlugins() {
     // Install the dependencies
     if (pkg.dependencies) {
       M.log.verbose('Installing plugin dependencies ...');
-      const command = `cd ${path.join('plugins', namespace)}; yarn install`;
+      const separator = (process.platform === 'win32') ? '&' : ';';
+      const command = `cd ${path.join('plugins', namespace)}${separator} yarn install`;
       const stdout = execSync(command);
       M.log.debug(stdout.toString());
       M.log.verbose('Dependencies installed.');
